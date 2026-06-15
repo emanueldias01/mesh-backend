@@ -9,7 +9,8 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/rooms", handler.CreateRoom)
+	http.HandleFunc("POST /rooms", handler.CreateRoom)
+	http.HandleFunc("GET /rooms/{id}", handler.GetRoom)
 	http.HandleFunc("/ws", websocket.HandleWS)
 	log.Println("Server running on 8080")
 	http.ListenAndServe(":8080", nil)

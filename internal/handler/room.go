@@ -8,18 +8,27 @@ import (
 )
 
 func CreateRoom(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodPost {
-		w.WriteHeader(http.StatusMethodNotAllowed)
-		return
-	}
-
 	room := room.CreateRoom()
 
-	response := map[string]string {
-		"roomId" : room.ID,
+	response := map[string]string{
+		"roomId": room.ID,
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	
+
 	json.NewEncoder(w).Encode(response)
+}
+
+func GetRoom(w http.ResponseWriter, r *http.Request) {
+
+	roomID := r.PathValue("id")
+
+	room, ok := room.GetRoom(roomID)
+
+	if !ok {
+		w.WriteHeader(http.StatusNotFound)
+		return
+	}
+
+	json.NewEncoder(w).Encode(room)
 }
