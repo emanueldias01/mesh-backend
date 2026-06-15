@@ -21,3 +21,12 @@ func CreateRoom() *Room{
 
 	return room
 }
+
+func GetRoom(code string) (*Room, bool) {
+	mutex.RLock()
+	defer mutex.RUnlock()
+
+	room, ok := rooms[code]
+
+	return room, ok
+}
