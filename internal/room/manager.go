@@ -1,6 +1,10 @@
 package room
 
-import "sync"
+import (
+	"sync"
+
+	"github.com/emanueldias01/mesh-backend/internal/websocket"
+)
 
 var (
 	rooms = make(map[string]*Room)
@@ -15,6 +19,7 @@ func CreateRoom() *Room{
 
 	room := &Room{
 		ID: code,
+		Clients: make(map[string]*websocket.Client),
 	}
 
 	rooms[code] = room
