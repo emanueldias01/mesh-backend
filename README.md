@@ -60,7 +60,7 @@ Audio/Video Stream
 ### Install Dependencies
 
 ```bash
-go mod download
+go mod tidy
 ```
 
 ### Run
@@ -83,7 +83,7 @@ http://localhost:8080
 
 ## Build
 ```bash
-    go build ./cmd
+    go build ./cmd/main.go
 ```
 
 ## How It Works
