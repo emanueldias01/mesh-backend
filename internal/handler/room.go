@@ -20,7 +20,6 @@ func CreateRoom(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetRoom(w http.ResponseWriter, r *http.Request) {
-
 	roomID := r.PathValue("id")
 
 	room, ok := room.GetRoom(roomID)
@@ -29,6 +28,8 @@ func GetRoom(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusNotFound)
 		return
 	}
+
+	w.Header().Set("Content-Type", "application/json")
 
 	json.NewEncoder(w).Encode(room)
 }

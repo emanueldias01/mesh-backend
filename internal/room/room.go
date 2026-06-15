@@ -8,8 +8,8 @@ import (
 
 type Room struct {
 	ID string `json:"id"`
-	Clients map[string]*websocket.Client
-	Mutex   sync.RWMutex
+	Clients map[string]*websocket.Client `json:"-"`
+	Mutex   sync.RWMutex          `json:"-"`
 }
 
 type RoomRequest struct {
