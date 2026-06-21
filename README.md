@@ -10,6 +10,8 @@ It is responsible for:
 * Exchanging WebRTC offers, answers, and ICE candidates
 * Broadcasting room events such as user join and leave notifications
 
+<a href="https://github.com/emanueldias01/Mesh">Mesh App</a>
+
 The server does not process audio or video streams. Media communication is established directly between participants using WebRTC peer-to-peer connections.
 
 ## Features
